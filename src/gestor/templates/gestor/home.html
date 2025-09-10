@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Gestor de Estudiantes</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5>Estudiantes</h5>
+                <p>Total: {{ total_estudiantes }}</p>
+                <a href="{% url 'estudiante_list' %}" class="btn btn-primary">Ver Estudiantes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5>Cursos</h5>
+                <p>Total: {{ total_cursos }}</p>
+                <a href="{% url 'curso_list' %}" class="btn btn-primary">Ver Cursos</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
