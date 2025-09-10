@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre del Curso</label>
+        {{ form.nombre }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.duracion.id_for_label }}" class="form-label">Duración (semanas)</label>
+        {{ form.duracion }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.descripcion.id_for_label }}" class="form-label">Descripción</label>
+        {{ form.descripcion }}
+    </div>
+    
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{% url 'curso_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

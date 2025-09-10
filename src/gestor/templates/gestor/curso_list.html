@@ -3,7 +3,10 @@
 {% block title %}Lista de Cursos{% endblock %}
 
 {% block content %}
-<h2>Lista de Cursos</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Lista de Cursos</h2>
+    <a href="{% url 'curso_create' %}" class="btn btn-success">Nuevo Curso</a>
+</div>
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -13,6 +16,7 @@
                 <th>Duración (semanas)</th>
                 <th>Descripción</th>
                 <th>Estudiantes Inscritos</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -22,10 +26,14 @@
                 <td>{{ curso.duracion }}</td>
                 <td>{{ curso.descripcion|truncatechars:50 }}</td>
                 <td>{{ curso.estudiantes.count }}</td>
+                <td>
+                    <a href="{% url 'curso_edit' curso.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'curso_delete' curso.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4" class="text-center">No hay cursos registrados</td>
+                <td colspan="5" class="text-center">No hay cursos registrados</td>
             </tr>
             {% endfor %}
         </tbody>
